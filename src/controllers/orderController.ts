@@ -103,3 +103,18 @@ export const getAllOrders = async (req: express.Request, res: express.Response) 
     res.status(500).json({ message: error.message });
   }
 };
+export const updateOrderStatus = async (req: express.Request<{ id: string }>, res: express.Response) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const order = await prisma.order.update({
+      where: { id },
+      data: { status },
+    });
+
+    res.json({ success: true, order });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};
