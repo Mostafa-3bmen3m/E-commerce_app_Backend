@@ -12,6 +12,7 @@ import orderRoutes from './routes/orderRoutes';
 import reviewRoutes from './routes/reviewRoutes';
 import contactRoutes from './routes/contactRoutes';
 import cartRoutes from './routes/cartRoutes';
+import watchlistRoutes from './routes/watchlistRoutes';
 
 import { limiter, authLimiter, errorHandler } from './middleware/security';
 
@@ -35,6 +36,7 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/watchlist', watchlistRoutes);
 
 app.get('/', (req, res) => {
   res.send('E-commerce API is running...');
